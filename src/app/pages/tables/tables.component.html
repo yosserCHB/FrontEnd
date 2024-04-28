@@ -1,0 +1,32 @@
+<table class="table" style="margin-top: 100px;">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">title</th>
+      <th scope="col">description</th>
+      <th scope="col">date</th>
+      <th scope="col">userName</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let post of poste">
+      <th scope="row">{{ post.idPoste }}</th>
+      <td>{{ post.title }}</td>
+      <td>{{ post.description }}</td>
+      <td>{{ post.date }}</td>
+      <td>{{ post.userName }}</td>
+<td>
+  <div style="display: flex; align-items: center;">
+    <span placement="top-center" style="cursor: pointer; margin-right: 10px;" ngbTooltip="Supprimer" (click)="deletePoste(post.idPoste)">
+      <i class="ni ni-fat-remove text-danger"></i>
+    </span>     
+    <span placement="top-center" style="cursor: pointer;" ngbTooltip="Modifier" (click)="updatePoste(post)">
+      <i class="ni ni-ruler-pencil text-info"></i>
+    </span>
+  </div>
+</td>
+
+         
+    </tr>
+  </tbody>
+</table>
