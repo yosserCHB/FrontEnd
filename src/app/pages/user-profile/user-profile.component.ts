@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 import { Poste } from 'src/app/Model/poste';
 import { PosteServiceService } from 'src/app/Service/poste-service.service';
 
@@ -20,7 +20,7 @@ export class UserProfileComponent implements OnInit {
 
     // Initialize form with default values
     this.Add = new FormGroup({
-      title: new FormControl('', [Validators.required]),
+      title: new FormControl('', [Validators.required, this.forbiddenWordsValidator(["firas", "yosser"])]),
       description: new FormControl('', [Validators.required]),
       date: new FormControl(currentDate, [Validators.required]), // Use currentDate here
       userName: new FormControl('', [Validators.required])
@@ -33,7 +33,6 @@ export class UserProfileComponent implements OnInit {
       this.poste.description = this.Add.get('description').value;
       this.poste.date = this.Add.get('date').value;
       this.poste.userName = this.Add.get('userName').value;
-
       this.posteServiceService.save(this.poste).subscribe(
         (response) => {
           console.log('New subscription added:', response);
@@ -55,5 +54,12 @@ export class UserProfileComponent implements OnInit {
         this.markFormGroupTouched(control);
       }
     });
+  }
+
+  forbiddenWordsValidator(words: string[]): ValidatorFn {
+    return (control: AbstractControl): {[key: string]: any} | null => {
+      const forbidden = words.some(word => new RegExp('\\b' + word + '\\b', 'i').test(control.value));
+      return forbidden ? {'forbiddenWords': {value: control.value}} : null;
+    };
   }
 }

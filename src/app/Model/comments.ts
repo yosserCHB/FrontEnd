@@ -1,10 +1,9 @@
 import { Poste } from "./poste";
 
 export class Comments {
-    idComment: number;
+    idComm: number;
     content: string;
     description: string;
     datePub: Date;
-    poste: Poste;
 }
 

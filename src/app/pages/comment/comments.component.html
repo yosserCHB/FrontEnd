@@ -1,0 +1,61 @@
+<div
+  class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+  style="
+    min-height: 10px;
+    background-image: url(assets/img/theme/profile-cover.jpg);
+    background-size: cover;
+    background-position: center top;
+  "
+>
+  <!-- Mask -->
+  <span class="mask bg-gradient-danger opacity-8"></span>
+  <div class="container-fluid d-flex align-items-center">
+    <div class="row">
+      <div class="col-lg-7 col-md-10">
+        <h1 class="display-2 text-white">Hello</h1>
+        <p class="text-white mt-0 mb-5">
+            "Be part of our community effort to support each other. Leave a comment to offer help or share valuable insights."        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<table class="table" style="margin-top: 100px;">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Content</th>
+      <th scope="col">Description</th>
+      <th scope="col">Date</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let comment of comments">
+      <td scope="row">{{ comment.idComm }}</td>
+      <td>{{ comment.content }}</td>
+      <td>{{ comment.description }}</td>
+      <td>{{ comment.datePub }}</td>
+      <td>
+        <div style="display: flex; align-items: center">
+          <span
+            placement="top-center"
+            style="cursor: pointer; margin-right: 10px"
+            ngbTooltip="Supprimer"
+            (click)="deleteComment(comment.idComm)"
+          >
+            <i class="ni ni-fat-remove text-danger"></i>
+          </span>
+          <span
+            placement="top-center"
+            style="cursor: pointer"
+            ngbTooltip="Modifier"
+            (click)="updateComment(comment)"
+          >
+            <i class="ni ni-ruler-pencil text-info"></i>
+          </span>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

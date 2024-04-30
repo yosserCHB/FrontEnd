@@ -6,12 +6,19 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { CommentsComponent } from './pages/comment/comments.component';
+import { AddCommentComponent } from './pages/add-comment/add-comment.component'; // Import du composant AddCommentComponent
 
 const routes: Routes =[
 
   {
     path: '/parking/poste/addPoste',
-    component: UserProfileComponent},
+    component: UserProfileComponent
+  },
+  {
+    path: '/parking/comment/addComment', 
+    component: AddCommentComponent
+  },
   {
     path: '',
     redirectTo: 'dashboard',
@@ -23,6 +30,14 @@ const routes: Routes =[
       {
         path: '',
         loadChildren: () => import('src/app/layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
+      },
+      {
+        path: 'comments', 
+        component: CommentsComponent 
+      },
+      {
+        path: 'add-comment', 
+        component: AddCommentComponent 
       }
     ]
   }, {

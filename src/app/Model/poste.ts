@@ -8,5 +8,4 @@ export class Poste {
     userName: string;
     comments: Comment[];
     user: User;
-
 }

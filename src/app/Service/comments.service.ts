@@ -11,7 +11,7 @@ export class CommentsService {
   private commentUrl: string;
 
   constructor(private http: HttpClient, private toastr: ToastrService) { 
-    this.commentUrl = 'http://localhost:9000/parking/comments';
+    this.commentUrl = 'http://localhost:9090/api/v1/comments';
   }
 
   public findAll(): Observable<Comments[]> {
@@ -31,6 +31,6 @@ export class CommentsService {
   }
 
   public update(comment: Comments): Observable<Comments> {
-    return this.http.put<Comments>(`${this.commentUrl}/updateComment/${comment.idComment}`, comment);
+    return this.http.put<Comments>(`${this.commentUrl}/updateComment/${comment.idComm}`, comment);
   }
 }

@@ -19,6 +19,7 @@ export class TablesComponent implements OnInit {
 
   ngOnInit() {
     this.loadPostes();
+   // console.log(this.poste);
   }
 
   loadPostes() {
@@ -68,6 +69,4 @@ export class TablesComponent implements OnInit {
       }
     );
   }
-
-  
 }

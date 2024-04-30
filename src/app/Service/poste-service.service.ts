@@ -13,7 +13,7 @@ export class PosteServiceService {
   constructor(private http: HttpClient, private toastr: ToastrService) {
     // Update the URL to match your backend URL
     // this.userUrl = 'http://localhost:9000/parking/userdashboard/user-count';
-    this.posteUrl = 'http://localhost:9000/parking/poste';
+    this.posteUrl = 'http://localhost:9090/api/v1/poste';
   }
 
   public findAll(): Observable<Poste[]> {
