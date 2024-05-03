@@ -1,0 +1,33 @@
+<div style="margin-top: 100px;">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Subscription number</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">Expiration Date</th>
+        <th scope="col">Price</th>
+        <th scope="col">Subscription Type</th>
+        <th scope="col">Actions</th> <!-- Header cell for actions -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let subscription of subscriptions">
+        <td>{{ subscription.idSub }}</td>
+        <td>{{ subscription.dateDebut | date }}</td>
+        <td>{{ subscription.dateExpiration | date }}</td>
+        <td>{{ subscription.price }}</td>
+        <td>{{ subscription.subType }}</td>
+        <td>
+          <div class="col-lg-3 col-md-6">
+            <button class="btn btn-sm btn-warning" (click)="editSubscription(subscription.idSub)">
+              <i class="ni ni-ruler-pencil"></i> Edit
+            </button>
+            <button class="btn btn-sm btn-danger" (click)="deleteSubscription(subscription.idSub)">
+              <i class="ni ni-fat-remove"></i> Delete
+            </button>
+          </div>
+        </td>   
+      </tr>
+    </tbody>
+  </table>
+</div>

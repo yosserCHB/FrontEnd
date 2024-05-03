@@ -1,54 +1,33 @@
 import { NgModule } from '@angular/core';
-import { CommonModule, } from '@angular/common';
-import { BrowserModule  } from '@angular/platform-browser';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+//import { SubscribeComponent } from './pages/subscribe/subscribe.component'; // Importez SubscribeComponent ici
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { GetallsubscriptionComponent } from './pages/getallsubscription/getallsubscription.component';
+import { SubscribeComponent } from './pages/subscribe/subscribe.component';
+//import { SubscribeComponent } from './pages/subscribe/subscribe.component';
 
-const routes: Routes =[
+const routes: Routes = [
+  { path: '/parking/poste/addPoste', component: UserProfileComponent },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: '', component: AdminLayoutComponent, children: [{ path: '', loadChildren: () => import('src/app/layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule) }] },
+  { path: '', component: AuthLayoutComponent, children: [{ path: '', loadChildren: () => import('src/app/layouts/auth-layout/auth-layout.module').then(m => m.AuthLayoutModule) }] },
+  { path: 'getallsubscription', component: GetallsubscriptionComponent },
+  { path: 'subscribe', component: SubscribeComponent },
+  { path: '**', redirectTo: 'dashboard' },
+ // { path: 'subscribe', component: SubscribeComponent },
+ // { path: 'subscribe', component: SubscribeComponent },*
+ 
+  
 
-  {
-    path: '/parking/poste/addPoste',
-    component: UserProfileComponent},
-  {
-    path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full',
-  }, {
-    path: '',
-    component: AdminLayoutComponent,
-    children: [
-      {
-        path: '',
-        loadChildren: () => import('src/app/layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
-      }
-    ]
-  }, {
-    path: '',
-    component: AuthLayoutComponent,
-    children: [
-      {
-        path: '',
-        loadChildren: () => import('src/app/layouts/auth-layout/auth-layout.module').then(m => m.AuthLayoutModule)
-      }
-    ]
-  }, {
-    path: '**',
-    redirectTo: 'dashboard'
-  }
 ];
 
 @NgModule({
   imports: [
-    CommonModule,
-    BrowserModule,
-    RouterModule.forRoot(routes,{
-      useHash: true
-    })
+      RouterModule.forRoot(routes, { useHash: true })
   ],
-  exports: [
-  ],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

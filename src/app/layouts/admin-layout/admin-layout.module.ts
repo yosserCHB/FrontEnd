@@ -12,6 +12,10 @@ import { MapsComponent } from '../../pages/maps/maps.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { GetallsubscriptionComponent } from 'src/app/pages/getallsubscription/getallsubscription.component';
+import { SubscribeComponent } from 'src/app/pages/subscribe/subscribe.component';
+//import { SubscribeComponent } from 'src/app/pages/subscribe/subscribe.component';
+//import { AbonnementComponent } from 'src/app/pages/abonnement/abonnement.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -29,7 +33,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     UserProfileComponent,
     TablesComponent,
     IconsComponent,
-    MapsComponent
+    MapsComponent,
+    GetallsubscriptionComponent,
+    SubscribeComponent
   ]
 })
 

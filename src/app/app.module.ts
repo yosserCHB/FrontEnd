@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Importez ReactiveFormsModule
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router'; // Importez RouterModule ici
 
 import { ToastrModule } from 'ngx-toastr';
 
@@ -13,13 +13,18 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
-
-
+import { GetallsubscriptionComponent } from './pages/getallsubscription/getallsubscription.component';
+import { SubscribeComponent } from './pages/subscribe/subscribe.component';
+//import { AbonnementComponent } from './pages/abonnement/abonnement.component';
+//import { SubscribeComponent } from './pages/subscribe/subscribe.component';
 @NgModule({
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    
+
+    
   ],
   imports: [
     BrowserModule,
@@ -31,7 +36,7 @@ import { ComponentsModule } from './components/components.module';
     AppRoutingModule,
     ComponentsModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot() 
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
