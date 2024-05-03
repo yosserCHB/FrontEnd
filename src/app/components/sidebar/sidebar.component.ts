@@ -13,11 +13,9 @@ export const ROUTES: RouteInfo[] = [
     { path: '/maps', title: 'Maps',  icon:'ni-pin-3 text-orange', class: '' },
     { path: '/user-profile', title: 'Add Posts',  icon:'ni-fat-add text-green', class: '' },
     { path: '/tables', title: 'Posts',  icon:'ni-bullet-list-67 text-red', class: '' },
+    { path: '/comments', title: 'Comments',  icon:'ni-chat-round text-green', class: '' },
     { path: '/login', title: 'Login',  icon:'ni-key-25 text-info', class: '' },
     { path: '/register', title: 'Register',  icon:'ni-circle-08 text-pink', class: '' },
-    { path: '/comments', title: 'Comments',  icon:'ni-chat-round text-green', class: '' },
-    { path: '/add-comment', title: 'Add Comment',  icon:'ni-fat-add text-green', class: '' },
-
 ];
 
 @Component({

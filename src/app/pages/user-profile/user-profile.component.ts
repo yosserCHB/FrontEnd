@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 import { Poste } from 'src/app/Model/poste';
 import { PosteServiceService } from 'src/app/Service/poste-service.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-profile',
@@ -12,17 +13,16 @@ export class UserProfileComponent implements OnInit {
   Add: FormGroup;
   poste: Poste = new Poste();
 
-  constructor(private posteServiceService: PosteServiceService) { }
+  constructor(private posteServiceService: PosteServiceService, private toastr: ToastrService) { }
 
   ngOnInit() {
     // Initialize current date
     const currentDate = new Date().toISOString().substring(0, 10);
 
-    // Initialize form with default values
     this.Add = new FormGroup({
-      title: new FormControl('', [Validators.required, this.forbiddenWordsValidator(["firas", "yosser"])]),
+      title: new FormControl('', [Validators.required, this.forbiddenWordsValidator(["chbinou", "yosser"])]),
       description: new FormControl('', [Validators.required]),
-      date: new FormControl(currentDate, [Validators.required]), // Use currentDate here
+      date: new FormControl(currentDate, [Validators.required]), 
       userName: new FormControl('', [Validators.required])
     });
   }
@@ -36,10 +36,12 @@ export class UserProfileComponent implements OnInit {
       this.posteServiceService.save(this.poste).subscribe(
         (response) => {
           console.log('New subscription added:', response);
+          this.toastr.success('Post added successfully!', 'Success');
           this.Add.reset();
         },
         (error) => {
           console.error('Error adding subscription:', error);
+          this.toastr.error('Failed to add post!', 'Error');
         }
       );
     } else {

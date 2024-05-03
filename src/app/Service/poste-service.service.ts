@@ -1,31 +1,30 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Poste } from '../Model/poste';
-import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PosteServiceService {
   private posteUrl: string;
+  private selectedPostSubject: BehaviorSubject<Poste | null> = new BehaviorSubject<Poste | null>(null);
+  public selectedPost$: Observable<Poste | null> = this.selectedPostSubject.asObservable();
 
-  constructor(private http: HttpClient, private toastr: ToastrService) {
+  constructor(private http: HttpClient) {
     // Update the URL to match your backend URL
-    // this.userUrl = 'http://localhost:9000/parking/userdashboard/user-count';
     this.posteUrl = 'http://localhost:9090/api/v1/poste';
   }
 
   public findAll(): Observable<Poste[]> {
-    return this.http.get<Poste[]>(this.posteUrl + '/getall');
+    return this.http.get<Poste[]>(`${this.posteUrl}/getall`);
+  }
+  public getPosteById(id: number): Observable<Poste> {
+    return this.http.get<Poste>(`${this.posteUrl}/getPosteById/${id}`);
   }
 
-  public save(poste: Poste) {
-    return this.http.post<Poste>(this.posteUrl + '/addPoste', poste).pipe(
-      tap(() => {
-        this.toastr.success('Post added successfully', 'Success');
-      })
-    );
+  public save(poste: Poste): Observable<Poste> {
+    return this.http.post<Poste>(`${this.posteUrl}/addPoste`, poste);
   }
 
   public deletePoste(id: number): Observable<any> {
@@ -34,5 +33,14 @@ export class PosteServiceService {
 
   public update(poste: Poste): Observable<Poste> {
     return this.http.put<Poste>(`${this.posteUrl}/updatePoste/${poste.idPoste}`, poste);
+}
+
+  public searchByTitle(title: string): Observable<Poste[]> {
+    const params = new HttpParams().set('title', title);
+    return this.http.get<Poste[]>(`${this.posteUrl}/searchByTitle`, { params });
+  }
+
+  public setSelectedPost(poste: Poste): void {
+    this.selectedPostSubject.next(poste);
   }
 }

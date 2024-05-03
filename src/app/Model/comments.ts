@@ -5,5 +5,6 @@ export class Comments {
     content: string;
     description: string;
     datePub: Date;
+    postId: number;
 }
 

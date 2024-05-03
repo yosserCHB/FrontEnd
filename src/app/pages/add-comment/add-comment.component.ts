@@ -18,11 +18,10 @@ export class AddCommentComponent implements OnInit {
     // Initialize current date
     const currentDate = new Date().toISOString().substring(0, 10);
 
-    // Initialize form with default values
     this.commentForm = new FormGroup({
-      content: new FormControl('', [Validators.required, this.forbiddenWordsValidator(["forbidden1", "forbidden2"])]),
-      description: new FormControl('', [Validators.required]),
-      datePub: new FormControl(currentDate, [Validators.required]), // Use currentDate here
+      content: new FormControl('', [Validators.required, this.forbiddenWordsValidator(["yosser", "chbinou"])]),
+      description: new FormControl('', [Validators.required , this.forbiddenWordsValidator(["yosser", "chbinou"])]),
+      datePub: new FormControl(currentDate, [Validators.required]), 
 
     });
   }

@@ -14,6 +14,8 @@ import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommentsComponent } from 'src/app/pages/comment/comments.component';
 import { AddCommentComponent } from 'src/app/pages/add-comment/add-comment.component';
+import { UpdatePosteComponent } from 'src/app/pages/update-poste/update-poste.component';
+import { UpdateCommentComponent } from 'src/app/pages/update-comment/update-comment.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -33,7 +35,9 @@ import { AddCommentComponent } from 'src/app/pages/add-comment/add-comment.compo
     IconsComponent,
     MapsComponent,
     CommentsComponent ,
-    AddCommentComponent
+    AddCommentComponent,
+    UpdatePosteComponent,
+    UpdateCommentComponent
   ]
 })
 

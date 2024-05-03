@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Comments } from 'src/app/Model/comments';
 import { CommentsService } from 'src/app/Service/comments.service'; 
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router'; // Importez Router depuis '@angular/router'
 
 @Component({
   selector: 'app-comments',
@@ -13,12 +14,12 @@ export class CommentsComponent implements OnInit {
 
   constructor(
     private commentsService: CommentsService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router // Injectez Router dans votre constructeur
   ) {}
 
   ngOnInit() {
     this.loadComments();
-  //  console.log(this.comments);
   }
 
   loadComments() {
@@ -49,7 +50,6 @@ export class CommentsComponent implements OnInit {
       },
       (error) => {
         console.error('Error updating comment:', error);
-        // Handle update error if needed
       }
     );
   }
@@ -65,5 +65,12 @@ export class CommentsComponent implements OnInit {
         this.toastr.error('Failed to add comment', 'Error');
       }
     );
+  }
+
+  updateSelectedComment(comment: Comments) {
+    // Stocker le commentaire sélectionné dans le service ou le stockage local pour y accéder dans le composant de mise à jour
+    this.commentsService.setSelectedComment(comment);
+    // Naviguer vers le composant de mise à jour avec l'ID du commentaire en tant que paramètre
+    this.router.navigate(['/update-comment', comment.idComm]);
   }
 }
