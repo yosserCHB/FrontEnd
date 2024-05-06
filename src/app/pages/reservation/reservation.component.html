@@ -1,0 +1,36 @@
+<div class="container-fluid mt-4">
+    <button class="btn btn-primary mb-3" routerLink="/reservations/add">Add New Reservation</button>
+    <table class="table" style="margin-top: 100px;">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Reservation Number</th>
+          <th scope="col">Date</th>
+          <th scope="col">Duration</th>
+          <th scope="col">User</th>
+          <th scope="col">Parking Spot</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reservation of reservations">
+          <th scope="row">{{ reservation.idReservation }}</th>
+          <td>{{ reservation.numRes }}</td>
+          <td>{{ reservation.date }}</td>
+          <td>{{ reservation.duration }}</td>
+          <td>{{ reservation.user?.firstname }} {{ reservation.user?.lastname }}</td>
+          <td>{{ reservation.parkingSpot?.numSpot }}</td>
+          <td>
+            <div style="display: flex; align-items: center;">
+              <span style="cursor: pointer; margin-right: 10px;" (click)="deleteReservation(reservation.idReservation)">
+                <i class="ni ni-fat-remove text-danger"></i>
+              </span>
+              <span style="cursor: pointer;" (click)="updateReservation(reservation.idReservation)">
+                <i class="ni ni-ruler-pencil text-info"></i>
+              </span>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>

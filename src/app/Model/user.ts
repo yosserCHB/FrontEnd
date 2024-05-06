@@ -1,7 +1,10 @@
+import { Reservation } from "./reservation";
+
 export class User {
 
-id: number;
+id?: number;
 firstname: string;
 lastname: string;
-dateOfBirth: Date;
+dateOfBirth?: Date;
+reservations?: Reservation[]; 
 }

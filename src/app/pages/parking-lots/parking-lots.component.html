@@ -1,0 +1,30 @@
+<div class="container-fluid mt-4">
+  <button class="btn btn-primary mb-3" routerLink="/parking-lots/add">Add New Parking Lot</button>
+  <table class="table" style="margin-top: 100px;">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Capacity</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let parkingLot of parkingLots">
+        <th scope="row">{{ parkingLot.idLot }}</th>
+        <td>{{ parkingLot.name }}</td>
+        <td>{{ parkingLot.capacity }}</td>
+        <td>
+          <div style="display: flex; align-items: center;">
+            <span placement="top-center" style="cursor: pointer; margin-right: 10px;" ngbTooltip="Delete" (click)="deleteParkingLot(parkingLot.idLot)">
+              <i class="ni ni-fat-remove text-danger"></i>
+            </span>
+            <span placement="top-center" style="cursor: pointer;" ngbTooltip="Edit" (click)="updateParkingLot(parkingLot.idLot)">
+              <i class="ni ni-ruler-pencil text-info"></i>
+            </span>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
