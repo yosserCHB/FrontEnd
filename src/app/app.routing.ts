@@ -6,12 +6,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { ReclamationComponent } from './pages/reclamation/reclamation.component';
 
 const routes: Routes =[
 
   {
     path: '/parking/poste/addPoste',
     component: UserProfileComponent},
+  
   {
     path: '',
     redirectTo: 'dashboard',
